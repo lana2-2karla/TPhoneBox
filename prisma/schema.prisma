@@ -9,3 +9,12 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_MYSQL_URL")
 }
+
+model Smartphone {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  price     Decimal  @db.Decimal()
+  image     String?  // Campo para armazenar o caminho/nome do arquivo de imagem
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
