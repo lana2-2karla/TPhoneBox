@@ -17,6 +17,16 @@ const createSmartphoneRepository = async (data) => {
   }
 }
 
+const getALLSmartphoneRepositoryPrisma = async () => {
+  try {
+    await prisma.smartphone.findMany()
+    return null
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
-  createSmartphoneRepository
+  createSmartphoneRepository,
+  getALLSmartphoneRepositoryPrisma
 }
