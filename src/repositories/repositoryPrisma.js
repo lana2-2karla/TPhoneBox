@@ -26,7 +26,20 @@ const getALLSmartphoneRepositoryPrisma = async () => {
   }
 }
 
+const updateSmartphoneRepositoryPrisma = async (id, data) => {
+  try {
+    const updatedSmartphone = await prisma.smartphone.update({
+      where: { id },
+      data
+    })
+    return updatedSmartphone
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   createSmartphoneRepository,
-  getALLSmartphoneRepositoryPrisma
+  getALLSmartphoneRepositoryPrisma,
+  updateSmartphoneRepositoryPrisma
 }
