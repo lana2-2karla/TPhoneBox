@@ -1,7 +1,17 @@
 const { prisma } = require('../utils/prismaClient')
 
-const createSmartphoneRepository = async (data) => {
+const createSmartphoneRepositoryPrisma = async (data) => {
   try {
+    const { name } = data
+
+    const existingSmartphone = await prisma.smartphone.findUnique({
+      where: { name }
+    })
+
+    if (existingSmartphone) {
+      throw new Error(`Já existe um smartphone com o nome '${name}'`)
+    }
+
     const smartphoneCreated = await prisma.smartphone.create({
       data,
       select: {
@@ -28,6 +38,14 @@ const getALLSmartphoneRepositoryPrisma = async () => {
 
 const updateSmartphoneRepositoryPrisma = async (id, data) => {
   try {
+    const existingSmartphone = await prisma.smartphone.findUnique({
+      where: { id }
+    })
+
+    if (!existingSmartphone) {
+      throw new Error(`Smartphone com ID ${id} não encontrado`)
+    }
+
     const updatedSmartphone = await prisma.smartphone.update({
       where: { id },
       data
@@ -60,7 +78,7 @@ const deleteSmartphoneRepositoryPrisma = async (id) => {
 }
 
 module.exports = {
-  createSmartphoneRepository,
+  createSmartphoneRepositoryPrisma,
   getALLSmartphoneRepositoryPrisma,
   updateSmartphoneRepositoryPrisma,
   deleteSmartphoneRepositoryPrisma
