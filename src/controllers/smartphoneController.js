@@ -1,10 +1,10 @@
 const { getAllSmartphoneRepositoryMdb } = require('../repositories/repositoryMongoDB')
-const { createSmartphoneRepository, getALLSmartphoneRepositoryPrisma, updateSmartphoneRepositoryPrisma, deleteSmartphoneRepositoryPrisma } = require('../repositories/repositoryPrisma')
+const { createSmartphoneRepositoryPrisma, getALLSmartphoneRepositoryPrisma, updateSmartphoneRepositoryPrisma, deleteSmartphoneRepositoryPrisma } = require('../repositories/repositoryPrisma')
 
 const createSmartphoneController = async (req, res) => {
   try {
-    const smartphoneCreated = await createSmartphoneRepository(req.body)
-    res.status(200).json(smartphoneCreated)
+    const smartphoneCreated = await createSmartphoneRepositoryPrisma(req.body)
+    res.status(201).json(smartphoneCreated)
   } catch (error) {
     res.status(400).send(error)
   }
@@ -19,7 +19,7 @@ const getAllSmartphoneController = async (req, res) => {
     }
     res.status(200).json(smartphonesPrisma)
   } catch (error) {
-    res.status(400).send(error)
+    res.status(404).send(error)
   }
 }
 
@@ -37,7 +37,7 @@ const deleteSmartphoneController = async (req, res) => {
     const smartphonedeleted = await deleteSmartphoneRepositoryPrisma(req.body.id)
     res.status(200).json(smartphonedeleted)
   } catch (error) {
-    res.status(400).send(error)
+    res.status(404).send(error)
   }
 }
 
