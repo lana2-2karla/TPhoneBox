@@ -1,5 +1,5 @@
 const { getAllSmartphoneRepositoryMdb } = require('../repositories/repositoryMongoDB')
-const { createSmartphoneRepository, getALLSmartphoneRepositoryPrisma } = require('../repositories/repositoryPrisma')
+const { createSmartphoneRepository, getALLSmartphoneRepositoryPrisma, updateSmartphoneRepositoryPrisma } = require('../repositories/repositoryPrisma')
 
 const createSmartphoneController = async (req, res) => {
   try {
@@ -23,7 +23,17 @@ const getAllSmartphoneController = async (req, res) => {
   }
 }
 
+const updateSmartphoneController = async (req, res) => {
+  try {
+    const smartphoneUpdated = await updateSmartphoneRepositoryPrisma(req.body.id, req.body)
+    res.status(200).json(smartphoneUpdated)
+  } catch (error) {
+    res.status(400).send(error)
+  }
+}
+
 module.exports = {
   createSmartphoneController,
-  getAllSmartphoneController
+  getAllSmartphoneController,
+  updateSmartphoneController
 }
