@@ -13,7 +13,7 @@ const createSmartphoneController = async (req, res) => {
 const getAllSmartphoneController = async (req, res) => {
   try {
     const smartphonesPrisma = await getALLSmartphoneRepositoryPrisma()
-    if (!smartphonesPrisma) {
+    if (smartphonesPrisma.length === 0) {
       const smartphonesMongoDB = await getAllSmartphoneRepositoryMdb()
       return res.status(200).json(smartphonesMongoDB)
     }
