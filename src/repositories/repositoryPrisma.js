@@ -38,8 +38,30 @@ const updateSmartphoneRepositoryPrisma = async (id, data) => {
   }
 }
 
+const deleteSmartphoneRepositoryPrisma = async (id) => {
+  try {
+    const existingSmartphone = await prisma.smartphone.findUnique({
+      where: { id }
+    })
+
+    if (!existingSmartphone) {
+      throw new Error(`Smartphone com ID ${id} não encontrado`)
+    }
+
+    await prisma.smartphone.delete({
+      where: { id }
+    })
+
+    return `Smartphone com ID ${id} deletado`
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 module.exports = {
   createSmartphoneRepository,
   getALLSmartphoneRepositoryPrisma,
-  updateSmartphoneRepositoryPrisma
+  updateSmartphoneRepositoryPrisma,
+  deleteSmartphoneRepositoryPrisma
 }
