@@ -19,8 +19,8 @@ const createSmartphoneRepository = async (data) => {
 
 const getALLSmartphoneRepositoryPrisma = async () => {
   try {
-    await prisma.smartphone.findMany()
-    return null
+    const smartphones = await prisma.smartphone.findMany()
+    return smartphones
   } catch (error) {
     console.log(error)
   }
