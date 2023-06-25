@@ -13,6 +13,36 @@
       </div>
     </div>
   </template>
+
+<script>
+import axios from '../service/api';
+import { onMounted, reactive, toRefs } from 'vue';
+
+export default {
+  setup() {
+    // Criando um objeto reativo para armazenar os dados da API
+    const state = reactive({
+      data: [],
+      error: null,
+    });
+
+    // Função para buscar os dados da API
+    const fetchData = async () => {
+        const response = await axios.dataAPI();
+        state.data = response;
+    };
+
+    // Executar a função fetchData quando o componente for montado
+    onMounted(fetchData);
+
+    // Retornar os dados reativos para serem usados no template
+    return {
+      ...toRefs(state),
+    };
+  },
+};
+</script>
+
   
   <style>
   .card {
