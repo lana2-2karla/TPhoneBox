@@ -45,6 +45,7 @@
 .buttons .button {
   padding: 8px 16px;
   margin-left: 8px;
+  margin-right: 8px;
   border: none;
   color: #fff;
   font-size: 16px;
@@ -69,7 +70,7 @@
 }
 
 .buttons .button:hover {
-  background-color: #1976d2;
+  transform: scale(1.1);
 }
 </style>
 
