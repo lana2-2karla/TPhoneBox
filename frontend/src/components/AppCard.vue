@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-container">
     <div v-for="item in data" :key="item.id" class="card">
       <div class="card-header">
         <h2>{{ item.name }}</h2>
@@ -7,7 +7,7 @@
       <div class="card-body">
         <img :src="item.image" :alt="item.name" class="product-image" />
         <p>a partir de:</p>
-        <p class="product-price">R$ {{ item.price }}</p>
+        <p class="product-price">R$ {{ item.price }},00</p>
         <p>em até 12 vezes sem juros</p>
         <p>Período de assinatura: 12 meses</p>
         <button class="subscribe-button">Quero Assinar</button>
@@ -51,6 +51,17 @@ export default {
 
 <style>
 /* Seus estilos CSS existentes aqui */
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 1300px; 
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin-left: -50px; /* Valor negativo para mover para a esquerda */
+  margin-right: auto;
+}
 
 .card {
   border: 1px solid #ccc;
