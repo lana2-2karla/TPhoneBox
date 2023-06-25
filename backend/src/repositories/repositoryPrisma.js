@@ -4,11 +4,11 @@ const createSmartphoneRepositoryPrisma = async (data) => {
   try {
     const { name } = data
 
-    const existingSmartphone = await prisma.smartphone.findUnique({
+    const existingSmartphone = await prisma.smartphone.findMany({
       where: { name }
     })
 
-    if (existingSmartphone) {
+    if (existingSmartphone.length > 0) {
       throw new Error(`Já existe um smartphone com o nome '${name}'`)
     }
 
