@@ -1,4 +1,5 @@
 <script setup>
+import AppCard from './components/AppCard.vue';
 import AppHeader from './components/AppHeader.vue'
 </script>
 
@@ -8,7 +9,12 @@ import AppHeader from './components/AppHeader.vue'
       <AppHeader />
     </div>
   </header>
-
+  
+  <main>
+    <div>
+      <AppCard />
+    </div>
+  </main>
 </template>
 
 <style scoped>
