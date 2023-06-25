@@ -11,12 +11,6 @@ import AppHeader from './components/AppHeader.vue'
   </header>
   
   <main>
-    <div>
-      <AppCard />
-    </div>
+    <AppCard />
   </main>
 </template>
-
-<style scoped>
-
-</style>
