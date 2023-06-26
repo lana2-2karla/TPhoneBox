@@ -14,16 +14,18 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     self.driver.maximize_window()
     self.driver.get('http://localhost:5173')
 
-  def test_first_button_header_displayed(self):
+  def test_search_all_header_elements(self):
 
-    # Verificação do primeiro botão no Header
+    # verificação da logo
+    logo = self.driver.find_element('xpath', '//*[@id="app"]/header/div/div/div[1]/img')
+    self.assertTrue(logo.is_displayed())
+    # verificação do primeiro botão no Header
     first_button = self.driver.find_element('xpath', '//*[@id="app"]/header/div/div/div[2]/button[1]')
     self.assertTrue(first_button.is_displayed())
-
-  def test_second_button_header_displayed(self):
-
+    # verificação do segundo botão
     second_button = self.driver.find_element('xpath', '//*[@id="app"]/header/div/div/div[2]/button[2]')
     self.assertTrue(second_button.is_displayed())
+
 
   def test_first_card(self):
 
