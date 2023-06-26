@@ -60,6 +60,13 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     self.assertTrue(button.is_displayed())
     self.assertEqual(text_button, 'Quero Assinar', "text is different")
 
+  
+  def test_take_screenshot(self):
+
+    # Tirar print da tela ---->> Muito interessante!!!
+    self.driver.save_screenshot('screenshot.png')
+
+
   def tearDown(self):
     # Fechamento do navegador
     self.driver.quit()
