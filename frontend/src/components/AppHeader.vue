@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="logo.png" alt="Logo">
+      <img src="https://www.groupevelours.com/wp-content/themes/rsw-velours/assets/logos/logo_footer.svg" alt="Logo"/>
     </div>
     <div class="buttons">
       <button class="button button-primary">Já sou TPhoneBox</button>
