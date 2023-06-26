@@ -41,10 +41,15 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
   
   def test_search_elements_by_cards(self):
 
+    time.sleep(3)
+
     expected_title = "iPhone 13"
     actual_title = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[1]/h2').text
     self.assertEqual(actual_title, expected_title)
 
+    expected_url = "https://yacare-products-image.s3.sa-east-1.amazonaws.com/iphone/4x/iPhone+13.png"
+    actual_url = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[2]/img').get_attribute('src')
+    self.assertEqual(actual_url, expected_url, "Image URL is different")
 
 
   def tearDown(self):
