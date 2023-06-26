@@ -27,10 +27,18 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     self.assertTrue(second_button.is_displayed())
 
 
-  def test_first_card(self):
+  def test_search_for_random_buttons(self):
 
     first_card = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]')
     self.assertTrue(first_card.is_displayed())
+
+    random_card = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[5]')
+    self.assertTrue(random_card.is_displayed())
+
+    last_card = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[7]')
+    self.assertTrue(last_card.is_displayed())
+
+    
 
 
   def tearDown(self):
