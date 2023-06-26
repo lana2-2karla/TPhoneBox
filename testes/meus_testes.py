@@ -38,7 +38,13 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     last_card = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[7]')
     self.assertTrue(last_card.is_displayed())
 
-    
+  
+  def test_search_elements_by_cards(self):
+
+    expected_title = "iPhone 13"
+    actual_title = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[1]/h2').text
+    self.assertEqual(actual_title, expected_title)
+
 
 
   def tearDown(self):
