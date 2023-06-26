@@ -27,7 +27,7 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     self.assertTrue(second_button.is_displayed())
 
 
-  def test_search_for_random_buttons(self):
+  def test_search_for_random_cards(self):
 
     first_card = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]')
     self.assertTrue(first_card.is_displayed())
@@ -51,6 +51,14 @@ class PythonTPhoneBoxSearch(unittest.TestCase):
     actual_url = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[2]/img').get_attribute('src')
     self.assertEqual(actual_url, expected_url, "Image URL is different")
 
+    expected_price = "R$ 2548,00"
+    actual_price = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[2]/p[2]').text
+    self.assertEqual(actual_price, expected_price, "price is different")
+ 
+    button = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[2]/button')
+    text_button = self.driver.find_element('xpath', '//*[@id="app"]/main/div/div[1]/div[2]/button').text
+    self.assertTrue(button.is_displayed())
+    self.assertEqual(text_button, 'Quero Assinar', "text is different")
 
   def tearDown(self):
     # Fechamento do navegador
